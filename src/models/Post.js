@@ -1,13 +1,14 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose from 'mongoose';
 
 const commentSchema = mongoose.Schema({
     user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true,
     },
     comment: {
         type: String,
+        required: true,
     },
     createdAt: {
         type: Date,
@@ -17,7 +18,7 @@ const commentSchema = mongoose.Schema({
 
 const postSchema = mongoose.Schema({
     creator: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true,
     },
