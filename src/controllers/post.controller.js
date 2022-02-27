@@ -40,7 +40,7 @@ export const update = async (req, res) => {
 
         if (!_post) return res.status(404).json({ message: 'Post not found ' });
 
-        if (req.userId !== _post.creator.toString()) return res.status(403).json({ message: 'Unauthorized' });
+        if (req.userId !== _post.creator.toString()) return res.status(403).json({ message: 'Forbidden' });
 
         const post = await Post.findByIdAndUpdate(postId, { ...req.body, _id: postId }, { new: true });
 
@@ -58,11 +58,11 @@ export const remove = async (req, res) => {
 
         if (!post) return res.status(404).json({ message: 'Post not found ' });
 
-        if (req.userId !== post.creator.toString()) return res.status(403).json({ message: 'Unauthorized' });
+        if (req.userId !== post.creator.toString()) return res.status(403).json({ message: 'Forbidden' });
 
         await Post.findByIdAndRemove(postId);
 
-        res.status(200).json({ message: 'Post deleted successfully' });
+        res.status(200).json({ message: 'Post deleted successfully', success: true });
     } catch (e) {
         res.status(400).json({ message: 'Invalid post id' });
     }

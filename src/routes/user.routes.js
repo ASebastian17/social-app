@@ -14,4 +14,7 @@ router.route('/users/:userId')
     .put(isAuthenticated, userCtrl.update)
     .delete(isAuthenticated, userCtrl.remove);
 
+router.route('/users/:userId/follow')
+    .put(isAuthenticated, userCtrl.followUser);
+
 export default router;
