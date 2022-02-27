@@ -94,6 +94,6 @@ export const followUser = async (req, res) => {
 
         res.status(201).json(user);
     } catch (e) {
-        res.status(400).json({ message: e.message});
+        res.status(400).json({ message: 'Invalid user id' });
     }
 };
